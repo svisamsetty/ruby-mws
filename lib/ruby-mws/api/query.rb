@@ -26,6 +26,10 @@ module MWS
         "https://" << @params[:host] << @params[:uri] << '?' << build_sorted_query(signature)
       end
 
+      def options
+        @params[:options] || {}
+      end
+
       private
       def build_sorted_query(signature=nil)
         params = @params.dup.delete_if {|k,v| exclude_from_query.include? k}
