@@ -16,6 +16,10 @@ module MWS
       @inventory ||= MWS::API::Inventory.new(@connection)
     end
 
+    def feeds
+      @feeds ||= MWS::API::Feed.new(@connection)
+    end
+
 
     # serves as a server ping
     def self.server_time
