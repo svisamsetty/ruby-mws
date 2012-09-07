@@ -11,7 +11,7 @@ module MWS
           :seller_skus => "SellerSkus.member"
         },
         :mods => [
-          lambda {|r| r.inventory_supply_list = [r.inventory_supply_list.member].flatten}
+          lambda {|r| r.inventory_supply_list = [r.inventory_supply_list.member].flatten if r.inventory_supply_list }
         ]
 
     end
