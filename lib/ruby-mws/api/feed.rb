@@ -7,9 +7,10 @@ module MWS
                  :uri => '/',
                  :version => '2009-01-01')
 
-      def get_feed_submission_result(params={})
-        raise NotImplementedError
-      end
+      def_request(:get_feed_submission_result,
+                 :verb => :get,
+                 :uri => '/',
+                 :version => '2009-01-01')
 
       def submit_feed(params={})
         raise ArgumentError, 'Must supply hash param' unless params.is_a?(Hash)
