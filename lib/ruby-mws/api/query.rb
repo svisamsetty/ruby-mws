@@ -67,7 +67,8 @@ module MWS
           :secret_access_key,
           :return,
           :lists,
-          :mods
+          :mods,
+          :options
         ]
       end
 
