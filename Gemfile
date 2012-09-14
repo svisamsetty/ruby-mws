@@ -4,7 +4,7 @@ source "http://rubygems.org"
 gemspec
 
 gem 'httparty'
-gem 'nokogiri'
+gem 'nokogiri', '>= 0.9.0'
 gem 'ruby-hmac'
 gem 'hashie'
 gem 'rash'
