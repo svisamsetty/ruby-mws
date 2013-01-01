@@ -43,8 +43,8 @@ module MWS
         params[:version]           ||= '2009-01-01'
 
         params[:lists] ||= {}
-        params[:lists][:marketplace_id] = "MarketplaceId.Id"
-
+        #params[:lists][:marketplace_id] = "MarketplaceId.Id"
+        puts params
         query = Query.new params
         @response = Response.parse self.class.send(params[:verb], query.request_uri), name, params
         if @response.respond_to?(:next_token) and @next[:token] = @response.next_token  # modifying, not comparing
