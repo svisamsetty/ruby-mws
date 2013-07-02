@@ -1,3 +1,5 @@
+This is a fork of ruby-mws by Erik Lyngvd.  I'm working on adding report requests as well as product feeds.  I'll add some tests as I go along.  I also updated this readme to describe how to test.
+
 ruby-mws
 ========
 
@@ -99,3 +101,24 @@ This object can be used to access all API services. Below are examples on how to
 
     `@mws.inventory.list_inventory_supply :seller_skus => ['PF-5VZN-04XR', 'V4-03EY-LAL1', 'OC-TUKC-031P']`
     `@mws.inventory.list_inventory_supply :query_start_date_time => Time.now-1.day`
+
+TESTS
+-----
+
+In order to add your own api call(s) which is not yet implemented by this wrapper add some tests that describe how your make your request
+and what you expect in the response.  
+
+Add a spec/credentials.yml file:
+
+seller_id: themerchantid
+aws_access_key_id: ...
+secret_access_key: ....
+marketplace_id: ATVPDKIKX0DER
+
+Don't run the entire test suite with rspec spec, you'll find the most of the tests don't pass.  This is because the tests were originially written to run against the amazon test box and the author's own credentials, which you likely don't have, and certain data, like report requests are only kept for 90 days.  So nevermind that.  Just get your own tests to pass.  The existing tests help you understand the usage, and could be used with your own credentials and data to get the tests to pass (if modified), but you wouldn't want to commit these or your credentials.
+
+Hence, credentials.yml and ephemeral_response folder are added to the .gitignore file.
+
+As you run the tests, the api calls are cached by ephemeral_response gem.  A folder called ephermal_response is created in the spec/fixtures directory.  Any api request that has the repeated same parameters will be loaded from the cache.  That is why in the tests you see timestamp being passed, even though this is not required, (if left nil, the current time is used), but by passing it in the rspec tests you can keep using the cached ephermal_response so that you don't have to keep hitting amazon.
+
+I suggest you hit the api once.  Generate the cached yml file.  Then copy and paste the timestamp from the request back into the rspec for future tests.  
