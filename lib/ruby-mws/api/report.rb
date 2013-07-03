@@ -18,16 +18,17 @@ module MWS
           lambda {|r| r.report_requests = [r.report_request_info].flatten}
         ]
 
-      def_request [:get_report],
+      def_request [:get_report_request_list_by_next_token],
         :verb => :get,
         :uri => '/',
         :version => '2009-01-01'
 
-
+      def_request [:get_report],
+        :verb => :get,
+        :uri => '/',
+        :version => '2009-01-01'
       
     end
-
-     
 
   end
 end

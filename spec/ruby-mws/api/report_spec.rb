@@ -42,10 +42,6 @@ describe MWS::API::Report do
 
 
 
-
-
-
-
   end
 
 end
