@@ -32,9 +32,9 @@ describe MWS::API::Report do
     end
 
     describe "download report" do
-      it "should be able to download the report" do
+      it "should be able to download the report (body is tab delimited data)" do
         response = @mws.reports.get_report :report_id => '11467220403', :timestamp => @timestamp
-        puts response.inspect
+        response.body.length.should > 0
       end
 
     end
