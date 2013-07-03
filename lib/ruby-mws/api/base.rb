@@ -34,7 +34,7 @@ module MWS
       def send_request(name, params, options)
         # prepare all required params...
         params = [params, options, @connection.to_hash].inject :merge
-        
+
         # default/common params
         params[:action]            ||= name.to_s.camelize
         params[:signature_method]  ||= 'HmacSHA256'
@@ -46,7 +46,7 @@ module MWS
         params[:lists][:marketplace_id] = "MarketplaceId.Id"
 
         query = Query.new params
-        @response = Response.parse self.class.send(params[:verb], query.request_uri), name, params
+        @response = Response.parse self.class.send(params[:verb], query.request_uri, query.options), name, params
         if @response.respond_to?(:next_token) and @next[:token] = @response.next_token  # modifying, not comparing
           @next[:action] = name.match(/_by_next_token/) ? name : "#{name}_by_next_token"
         end

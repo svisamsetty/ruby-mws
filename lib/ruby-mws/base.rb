@@ -19,6 +19,10 @@ module MWS
     def reports
       @reports ||= MWS::API::Report.new(@connection)
     end
+    
+    def feeds
+      @feeds ||= MWS::API::Feed.new(@connection)
+    end
 
 
     # serves as a server ping
