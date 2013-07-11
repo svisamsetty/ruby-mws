@@ -45,7 +45,7 @@ module MWS
 
         params[:lists] ||= {}
         params[:lists][:marketplace_id] = "MarketplaceId.Id"
-
+        
         query = Query.new params
         
         resp = self.class.send(params[:verb], query.request_uri)

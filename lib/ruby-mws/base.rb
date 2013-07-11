@@ -15,6 +15,10 @@ module MWS
     def inventory
       @inventory ||= MWS::API::Inventory.new(@connection)
     end
+    
+    def products
+      @products ||= MWS::API::Product.new(@connection)
+    end
 
     def reports
       @reports ||= MWS::API::Report.new(@connection)
