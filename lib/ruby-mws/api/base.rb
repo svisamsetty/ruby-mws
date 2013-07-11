@@ -44,7 +44,7 @@ module MWS
         params[:version]           ||= '2009-01-01'
 
         params[:lists] ||= {}
-        params[:lists][:marketplace_id] = "MarketplaceId.Id"
+        params[:lists][:marketplace_id] = "MarketplaceId.Id" unless params.has_key?(:marketplace_id)
         
         query = Query.new params
         

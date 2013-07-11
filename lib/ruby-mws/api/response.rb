@@ -19,8 +19,12 @@ module MWS
           # only runs mods if correct result is present
           params[:mods].each {|mod| mod.call(rash) } if params[:mods]
         end
-
         rash
+        # rash = rash["#{name}_result"]
+        # puts rash.class
+        # puts rash.first.asin
+        # puts rash.first.product.attribute_sets.item_attributes.audience_rating
+        # rash
       end
 
       def self.handle_error_response(error)

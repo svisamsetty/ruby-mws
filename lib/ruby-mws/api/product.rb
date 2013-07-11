@@ -3,16 +3,19 @@ module MWS
 
     class Product < Base
 
-      def_request [:get_lowest_offer_listings_for_ASIN],
+      def_request [:get_lowest_offer_listings_for_ASIN, :get_matching_product],
         :verb => :get,
         :uri => '/Products/2011-10-01',
         :version => '2011-10-01',
         :lists => {
           :asin_list => "ASINList.ASIN"
-        },
-        :mods => [
-          lambda {|r| r.collect!{ |p| p.product }}
-        ]
+        }#, -- not sure we want to mod this, we'll lose the ASIN in the wrapper
+        # :mods => [
+        #   #lambda {|r| r.collect!{ |p| p.product }}
+        # ]
+
+
+
 
     end
 
