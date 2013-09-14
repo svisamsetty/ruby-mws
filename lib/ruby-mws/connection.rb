@@ -16,7 +16,7 @@ module MWS
     end
 
     def public_attrs
-      [:aws_access_key_id, :seller_id, :marketplace_id, :host]
+      [:seller_id, :marketplace_id, :host]
     end
 
     def private_attrs
@@ -24,7 +24,7 @@ module MWS
     end
 
     def attrs
-      public_attrs + private_attrs
+      public_attrs
     end
 
     # an attempt to hide sensitive login credentials in logs, just being paranoid
